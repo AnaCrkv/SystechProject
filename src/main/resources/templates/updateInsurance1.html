@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Add new insurance</title>
+</head>
+<div align="center">
+    <h1>Add new insurance</h1>
+    <form action="#" th:action="@{/mvc/update2}" th:object="${insurance}" method="POST">
+        <table border="0" cellpadding="10">
+            <tr>
+            <tr>
+                <td> <input type="hidden" th:field="*{id}"></td>
+            </tr>
+            <tr>
+                <td> Start date </td>
+                <td> <input type="date" th:field="*{startDate}"></td>
+            </tr>
+            <tr>
+                <td> End Date </td>
+                <td> <input type="date" th:field="*{endDate}"></td>
+            </tr>
+            <tr>
+                <td> Type </td>
+                <td>
+                    <select id="type" th:field="*{type}">
+                        <option th:each="type : ${T(com.methodie.prvizadatak.business.database.enums.Type).values()}"
+                                th:value="${type}" th:text="${type}"></option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td> Price </td>
+                <td> <input type="number" th:field="*{price}"></td>
+            </tr>
+            <tr>
+                <td> Car </td>
+                <td> <select th:field="*{car.id}">
+                    <option th:each="car1 : ${cars}" th:value="${car1.id}"
+                            th:text="${car1.manufacturer}">
+                    </option>
+                </select></td>
+            </tr>
+
+            <form action="#" th:action="@{/mvc/update2}" th:object="${model1}" method="POST">
+                <p th:if="${message!=null}" th:text="${message}"></p>
+            </form>
+            <tr>
+                <td colspan="2"><button type="submit" >Update </button></td>
+            </tr>
+        </table>
+    </form>
+</div>
+</html>

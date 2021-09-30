@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>All insurances</title>
+</head>
+<body>
+<div align="center">
+    <h1>All Insurances</h1>
+    <a href="newInsurances"> Add new Insurances </a>
+
+    <table border="1">
+        <thead>
+        <tr>
+            <th> Start date</th>
+            <th> End Date </th>
+            <th> Type  </th>
+            <th> Price </th>
+            <th> Car </th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="insurance:${insurances}">
+            <td th:text="${insurance.startDate}">Start date</td>
+            <td th:text="${insurance.endDate}">End date</td>
+            <td th:text="${insurance.type}">Type</td>
+            <td th:text="${insurance.price}">Price</td>
+            <td th:text="${insurance.car.manufacturer}">Car</td>
+            <td><a th:href="@{/mvc/updateInsurance/{id} (id=${insurance.id})}">Update Insurance</a>
+                <a th:href="@{/mvc/deleteInsurance/{id} (id=${insurance.id})}">Delete Insurance</a> </td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+</body>
+</html>

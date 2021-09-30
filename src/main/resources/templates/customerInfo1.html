@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>CustomersInfo</title>
+</head>
+<body>
+<div align="center">
+    <h1> CustomersInfo </h1>
+    <a href="newCustomerInfo">Add new CustomerInfo</a>
+    <table border="1">
+        <thead>
+        <tr>
+            <!--  <th> Customer Name</th>-->
+            <th> Activation</th>
+            <th> Amount</th>
+            <th> Customer</th>
+            <th> Action </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="customerInfo:${customersInfo}">
+            <!--<td th:text="${customer.id}">Customer Id</td>-->
+            <td th:text="${customerInfo.activation}">Activation</td>
+            <td th:text="${customerInfo.amount}">Amount</td>
+            <td th:text="${customerInfo.customer.getFullName()}">Customer date</td>
+            <td><a th:href="@{/mvc/updateCustomerInfo/{id} (id=${customerInfo.id})}">Update CustomerInfo</a>
+                <a th:href="@{/mvc/deleteCustomerInfo/{id} (id=${customerInfo.id})}">Delete CustomerInfo</a> </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

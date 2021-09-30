@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>All cars</title>
+</head>
+<body>
+<div align="center">
+    <h1>All cars</h1>
+    <a href="newCar"> Add new car </a>>
+    <table border="1">
+        <thead>
+        <tr>
+            <th> Car manufacturer</th>
+            <th> Production Date </th>
+            <th> Engine </th>
+            <th> Engine Type </th>
+            <th> Kilometers</th>
+            <th> Customer </th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="car:${cars}">
+            <!--<td th:text="${customer.id}">Customer Id</td>-->
+            <td th:text="${car.manufacturer}">Manufacturer</td>
+            <td th:text="${car.production_date}">Production date</td>
+            <td th:text="${car.engine}">Engine</td>
+            <td th:text="${car.engine_type}">Engine type</td>
+            <td th:text="${car.kilometers}">Kilometers</td>
+            <td th:text="${car.customer.getFullName()}"/>
+
+            </td>
+            <td><a th:href="@{/mvc/updateCar/{id} (id=${car.id})}">Update Car</a>
+                <a th:href="@{/mvc/deleteCar/{id} (id=${car.id})}">Delete Car</a> </td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+</body>
+</html>

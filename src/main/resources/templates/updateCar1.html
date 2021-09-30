@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Update new car</title>
+</head>
+<div align="center">
+    <h1>Update new car</h1>
+    <form action="#" th:action="@{/mvc/update1}" th:object="${car}" method="POST">
+        <table border="0" cellpadding="10">
+            <tr>
+
+            <tr>
+                <td> <input type="hidden" th:field="*{id}"></td>
+            </tr>
+            <tr>
+                <td> Manufacturer </td>
+                <td> <input type="text" th:field="*{manufacturer}"></td>
+            </tr>
+            <tr>
+                <td> Production date </td>
+                <td> <input type="date" th:field="*{production_date}"></td>
+            </tr>
+            <tr>
+                <td> Engine </td>
+                <td> <input type="number" th:field="*{engine}"></td>
+            </tr>
+            <tr>
+                <td> EngineType </td>
+                <td> <select id="engine_type" th:field="*{engine_type}">
+                    <option th:each="engine_type : ${T(com.methodie.prvizadatak.business.database.enums.EngineType).values()}"
+                            th:value="${engine_type}" th:text="${engine_type}"></option>
+                </select></td>
+            </tr>
+            <tr>
+                <td> Kilometers </td>
+                <td> <input type="text" th:field="*{kilometers}"></td>
+            </tr>
+            <tr>
+                <td> Customer </td>
+                <td> <select th:field="*{customer.id}">
+                    <option th:each="customer1 : ${customers}" th:value="${customer1.id}"
+                            th:text="${customer1.getFullName()}">
+                    </option>
+                </select></td>
+            </tr>
+            </tr>
+            <form action="#" th:action="@{/mvc/update1}" th:object="${model1}" method="POST">
+                <p th:if="${message!=null}" th:text="${message}"></p>
+            </form>
+            <tr>
+            <tr>
+                <td colspan="2"><button type="submit" >Update </button></td>
+            </tr>
+        </table>
+    </form>
+</div>
+</html>

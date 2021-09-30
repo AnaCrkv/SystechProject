@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Update customer</title>
+</head>
+<div align="center">
+    <h1>Update customer</h1>
+    <form action="#" th:action="@{/mvc/update}" th:object="${customer}" method="POST">
+        <table border="0" cellpadding="10">
+            <tr>
+            <tr>
+                <td> <input type="hidden" th:field="*{id}"></td>
+            </tr>
+            <tr>
+                <td> Customer name </td>
+                <td> <input type="text" th:field="*{name}"></td>
+            </tr>
+            <tr>
+                <td> Customer Surname </td>
+                <td> <input type="text" th:field="*{surname}"></td>
+            </tr>
+            <tr>
+                <td> Customer date </td>
+                <td> <input type="date" th:field="*{date}"></td>
+            </tr>
+            <tr>
+                <td> Customer gender </td>
+                <td>
+                    <select id="gender" th:field="*{gender}">
+                        <option th:each="gender : ${T(com.methodie.prvizadatak.business.database.enums.EGender).values()}"
+                                th:value="${gender}" th:text="${gender}"></option>
+                    </select>
+                </td>
+            </tr>
+            <form action="#" th:action="@{/mvc/save}" th:object="${model2}" method="POST">
+                <p th:if="${message!=null}" th:text="${message}"></p>
+            </form>
+            <tr>
+                <td colspan="2"><button type="submit" >Update </button></td>
+            </tr>
+            </tr>
+        </table>
+    </form>
+</div>
+</html>

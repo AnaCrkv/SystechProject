@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Update CustomerInfo</title>
+</head>
+<div align="center">
+    <h1>Update CustomerInfo</h1>
+    <form action="#" th:action="@{/mvc/delete3}" th:object="${customerInfo}" method="POST">
+        <table border="0" cellpadding="10">
+            <tr>
+            <tr>
+                <td> <input type="hidden" th:field="*{id}"></td>
+            </tr>
+            <tr>
+                <td> Activation </td>
+                <td> <select id="activation" th:field="*{activation}">
+                    <option th:each="activation : ${T(com.methodie.prvizadatak.business.database.enums.Active).values()}"
+                            th:value="${activation}" th:text="${activation}"></option>
+                </select> </td>
+            </tr>
+            <tr>
+                <td> Amount </td>
+                <td> <input type="number" th:field="*{amount}"></td>
+            </tr>
+            <tr>
+                <td> Customer </td>
+                <td> <select th:field="*{customer.id}">
+                    <option th:each="customer2 : ${customers}" th:value="${customer2.id}"
+                            th:text="${customer2.getFullName()}">
+                    </option>
+                </select></td> </tr>
+            </tr>
+            </tr>
+            <form action="#" th:action="@{/mvc/delete3}" th:object="${model1}" method="POST">
+                <p th:if="${message!=null}" th:text="${message}"></p>
+            </form>
+            <tr>
+            <tr>
+                <td colspan="2"><button type="submit" > Delete </button></td>
+            </tr>
+        </table>
+    </form>
+</div>
+</html>
